@@ -1,0 +1,5 @@
+{
+  "api_releases_stable": "https://update.code.visualstudio.com/api/releases/stable",
+  "api_releases_insider": "https://update.code.visualstudio.com/api/releases/insider",
+  "api_update": "https://update.code.visualstudio.com/api/update"
+}
