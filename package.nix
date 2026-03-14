@@ -43,29 +43,21 @@ let
   pname = "vscode-bin-${channel}";
   mainBin = if channel == "insider" then "code-insiders" else "code";
 
-  # For insider: always re-download with builtins.fetchTarball (impure, no hash)
-  # since Microsoft's CDN breaks hashing randomly for insider builds.
-  # For stable: use fetchurl with a pinned hash as usual.
-  mkSrc =
-    platform: hashKey:
-    if channel == "insider" then
-      builtins.fetchTarball {
-        url = downloadUrl platform;
-      }
-    else
-      fetchurl {
-        url = downloadUrl platform;
-        hash = currentVersion.${hashKey};
-        name = "vscode-${channel}-${currentVersion.version}-${platform}.tar.gz";
-      };
-
   defaultArgs =
     {
       "x86_64-linux" = {
-        src = mkSrc "linux-x64" "hash-linux-x64";
+        src = fetchurl {
+          url = downloadUrl "linux-x64";
+          hash = currentVersion."hash-linux-x64";
+          name = "vscode-${channel}-${currentVersion.version}-linux-x64.tar.gz";
+        };
       };
       "aarch64-linux" = {
-        src = mkSrc "linux-arm64" "hash-linux-arm64";
+        src = fetchurl {
+          url = downloadUrl "linux-arm64";
+          hash = currentVersion."hash-linux-arm64";
+          name = "vscode-${channel}-${currentVersion.version}-linux-arm64.tar.gz";
+        };
       };
     }
     .${stdenv.hostPlatform.system}
