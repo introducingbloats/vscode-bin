@@ -30,13 +30,6 @@ writeShellApplication {
       VERSION=$(echo "$RELEASES" | jq -r '.[0]')
       echo "Latest $CHANNEL version: $VERSION"
 
-      CURRENT_VERSION=$(jq -r ".$CHANNEL.version" version.json)
-      echo "Flake $CHANNEL version: $CURRENT_VERSION"
-      if [ "$VERSION" = "$CURRENT_VERSION" ]; then
-        echo "$CHANNEL version matches, skipping"
-        return 0
-      fi
-
       echo "Fetching update info for x86_64-linux"
       X64_INFO=$(curl -sL "${constants.api_update}/linux-x64/$CHANNEL/latest")
       COMMIT=$(echo "$X64_INFO" | jq -r '.version')
@@ -56,6 +49,13 @@ writeShellApplication {
       ARM64_SHA256=$(nix-prefetch-url "$ARM64_URL")
       ARM64_HASH=$(nix-hash --to-sri --type sha256 "$ARM64_SHA256")
       echo "$CHANNEL aarch64-linux hash: $ARM64_HASH"
+
+      CURRENT_X64_HASH=$(jq -r ".$CHANNEL.\"hash-linux-x64\"" version.json)
+      CURRENT_ARM64_HASH=$(jq -r ".$CHANNEL.\"hash-linux-arm64\"" version.json)
+      if [ "$X64_HASH" = "$CURRENT_X64_HASH" ] && [ "$ARM64_HASH" = "$CURRENT_ARM64_HASH" ]; then
+        echo "$CHANNEL hashes unchanged, skipping update"
+        return 0
+      fi
 
       jq --arg channel "$CHANNEL" \
          --arg version "$VERSION" \
