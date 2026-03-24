@@ -1,6 +1,5 @@
 {
   lib,
-  nix-prefetch-scripts,
   writeShellApplication,
   jq,
   coreutils,
@@ -13,7 +12,6 @@ writeShellApplication {
   name = "vscode-bin-update";
   runtimeInputs = [
     jq
-    nix-prefetch-scripts
     coreutils
     curl
   ];
@@ -37,8 +35,7 @@ writeShellApplication {
       echo "Commit: $COMMIT"
 
       echo "Fetching x86_64-linux tarball and calculating hash"
-      X64_SHA256=$(nix-prefetch-url "$X64_URL")
-      X64_HASH=$(nix-hash --to-sri --type sha256 "$X64_SHA256")
+      X64_HASH=$(nix store prefetch-file --json "$X64_URL" | jq -r '.hash')
       echo "$CHANNEL x86_64-linux hash: $X64_HASH"
 
       echo "Fetching update info for aarch64-linux"
@@ -46,8 +43,7 @@ writeShellApplication {
       ARM64_URL=$(echo "$ARM64_INFO" | jq -r '.url')
 
       echo "Fetching aarch64-linux tarball and calculating hash"
-      ARM64_SHA256=$(nix-prefetch-url "$ARM64_URL")
-      ARM64_HASH=$(nix-hash --to-sri --type sha256 "$ARM64_SHA256")
+      ARM64_HASH=$(nix store prefetch-file --json "$ARM64_URL" | jq -r '.hash')
       echo "$CHANNEL aarch64-linux hash: $ARM64_HASH"
 
       CURRENT_X64_HASH=$(jq -r ".$CHANNEL.\"hash-linux-x64\"" version.json)
