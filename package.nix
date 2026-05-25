@@ -118,6 +118,9 @@ stdenv.mkDerivation (finalAttrs: {
     # The tarball extracts to a VSCode-linux-* or VSCode-Insiders-linux-* directory
     cp -r VSCode-*/* $out/ 2>/dev/null || cp -r * $out/
 
+    # Remove bundled Copilot binary artifacts if present
+    find "$out/bin" -maxdepth 1 -type f -name "*copilot*" -exec rm -f {} +
+
     # Install icon
     if [ -f "$out/resources/app/resources/linux/code.png" ]; then
       install -Dm644 "$out/resources/app/resources/linux/code.png" \
