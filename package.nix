@@ -119,9 +119,7 @@ stdenv.mkDerivation (finalAttrs: {
     cp -r VSCode-*/* $out/ 2>/dev/null || cp -r * $out/
 
     # Remove problematic Insider Copilot native binary to avoid regression
-    if [ "${channel}" = "insider" ]; then
-      rm -f "$out/resources/app/node_modules/@github/copilot-linuxmusl-x64/copilot"
-    fi
+    rm -f "$out/resources/app/node_modules/@github/copilot-linuxmusl-x64/copilot"
 
     # Install icon
     if [ -f "$out/resources/app/resources/linux/code.png" ]; then
