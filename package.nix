@@ -23,14 +23,20 @@
   libxfixes,
   libxrandr,
   libgbm,
+  libxtst,
+  pipewire,
+  libei,
+  libjpeg_turbo,
   libxkbcommon,
   alsa-lib,
   curl,
   openssl,
   webkitgtk_4_1,
   libsoup_3,
-  xorg,
   libsecret,
+  libx11,
+  libxcb,
+  libxext,
   libxkbfile,
   util-linux,
   channel ? "stable",
@@ -95,9 +101,13 @@ stdenv.mkDerivation (finalAttrs: {
     libgbm
     libxkbcommon
     alsa-lib
-    xorg.libX11
-    xorg.libxcb
-    xorg.libXext
+    libx11
+    libxcb
+    libxext
+    libxtst
+    pipewire
+    libei
+    libjpeg_turbo
     libsecret
     libxkbfile
     curl
@@ -120,6 +130,8 @@ stdenv.mkDerivation (finalAttrs: {
 
     # Remove problematic Insider Copilot native binary to avoid regression
     rm -f "$out/resources/app/node_modules/@github/copilot-linuxmusl-x64/copilot"
+    # Remove computer.node, this broke `libjpeg.so.8`, currently libjpeg_turbo package uses no suffix `.8`.
+    rm -f "$out/resources/app/extensions/copilot/node_modules/@github/copilot/sdk/prebuilds/linux-x64/computer.node"
 
     # Install icon
     if [ -f "$out/resources/app/resources/linux/code.png" ]; then
