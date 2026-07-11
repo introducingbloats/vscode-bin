@@ -39,7 +39,7 @@ writeShellApplication {
       echo "$CHANNEL x86_64-linux hash: $X64_HASH"
 
       echo "Fetching update info for aarch64-linux"
-      ARM64_INFO=$(curl -sL "${constants.api_update}/linux-arm64/$CHANNEL/latest")
+      #ARM64_INFO=$(curl -sL "${constants.api_update}/linux-arm64/$CHANNEL/latest")
       ARM64_URL="https://update.code.visualstudio.com/$VERSION/linux-arm64/$CHANNEL"
       echo "Fetching aarch64-linux tarball and calculating hash"
       ARM64_HASH=$(nix store prefetch-file --json "$ARM64_URL" | jq -r '.hash')
