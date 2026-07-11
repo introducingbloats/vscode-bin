@@ -31,7 +31,7 @@ writeShellApplication {
       echo "Fetching update info for x86_64-linux"
       X64_INFO=$(curl -sL "${constants.api_update}/linux-x64/$CHANNEL/latest")
       COMMIT=$(echo "$X64_INFO" | jq -r '.version')
-      X64_URL=$(echo "$X64_INFO" | jq -r '.url')
+      X64_URL="https://update.code.visualstudio.com/$VERSION/linux-x64/$CHANNEL"
       echo "Commit: $COMMIT"
 
       echo "Fetching x86_64-linux tarball and calculating hash"
@@ -40,8 +40,7 @@ writeShellApplication {
 
       echo "Fetching update info for aarch64-linux"
       ARM64_INFO=$(curl -sL "${constants.api_update}/linux-arm64/$CHANNEL/latest")
-      ARM64_URL=$(echo "$ARM64_INFO" | jq -r '.url')
-
+      ARM64_URL="https://update.code.visualstudio.com/$VERSION/linux-arm64/$CHANNEL"
       echo "Fetching aarch64-linux tarball and calculating hash"
       ARM64_HASH=$(nix store prefetch-file --json "$ARM64_URL" | jq -r '.hash')
       echo "$CHANNEL aarch64-linux hash: $ARM64_HASH"
