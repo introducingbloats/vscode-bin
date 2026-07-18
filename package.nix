@@ -132,6 +132,8 @@ stdenv.mkDerivation (finalAttrs: {
     rm -f "$out/resources/app/node_modules/@github/copilot-linuxmusl-x64/copilot"
     # Remove computer.node, this broke `libjpeg.so.8`, currently libjpeg_turbo package uses no suffix `.8`.
     rm -f "$out/resources/app/extensions/copilot/node_modules/@github/copilot/sdk/prebuilds/linux-x64/computer.node"
+    # Remove onnxruntime. We should not rely on pre-packaged one and i do not use local AI.
+    rm -rf "$out/resources/app/node_modules.asar.unpacked/onnxruntime-node"
 
     # Install icon
     if [ -f "$out/resources/app/resources/linux/code.png" ]; then
