@@ -8,7 +8,7 @@
   "insider": {
     "version": "1.135.0-insider",
     "commit": "68953c79d41be497c119c6602fd85158a5ee56b8",
-    "hash-linux-x64": "sha256-p1BydZs0ME5x/8w5Iqgg6eP5ESq+jd78jZ/rEVDscGc=",
+    "hash-linux-x64": "sha256-v9Ck2IgUJrthax6spp3j8/SuJ/Z/nk6nvWFG1G3JXD8=",
     "hash-linux-arm64": "sha256-dVA8Xm8kHTKnNP7jDLc2oGN6UWQQbXAxbNtfynJpEvI="
   }
 }
