@@ -7,8 +7,8 @@
   },
   "insider": {
     "version": "1.137.0-insider",
-    "commit": "1f625adb84abf41cdff31f40f66e58a222f033f6",
-    "hash-linux-x64": "sha256-2s6HlxSqG+bnIt5XS7GrS0NQX9HDc9OejMEWyfg6L4I=",
-    "hash-linux-arm64": "sha256-C9mJ8FHw+u0yuu3mAUOH/lqKXPcRvuo5wLTVWtYrwFM="
+    "commit": "a3c780be1ff7381b665d0592052fb1c7c9e93ab6",
+    "hash-linux-x64": "sha256-FJmEH2QdcJY49Qq9ZZ3PyBeWh/2SJgFMkmcKUoAVohI=",
+    "hash-linux-arm64": "sha256-wy/gYAh6n9/ncgMoJZ95n9s/FATUGlDarETrHeCaAkE="
   }
 }
