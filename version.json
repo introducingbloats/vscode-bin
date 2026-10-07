@@ -1,14 +1,14 @@
 {
   "stable": {
-    "version": "1.140.0",
-    "commit": "07f806f999227108933c2e30515b26eecc1fda74",
-    "hash-linux-x64": "sha256-0yAx6eIT1ZUyrzzzL8uLNXoc3RBBeWe09bW6MENtwNw=",
-    "hash-linux-arm64": "sha256-lgmnZVxLwqEBs0P/IqqR9meLRtlWW5FMBgi9fy5Xf6Y="
+    "version": "1.141.0",
+    "commit": "2a59476c9bfcb90b3ddc372c36762471b7dfad1c",
+    "hash-linux-x64": "sha256-131YjwRUy6qnHnI0l95BYNFblfukmIq+F3sUMua9Vwo=",
+    "hash-linux-arm64": "sha256-O26iOKKqkAC6sBN8GfBtTo7ctVh0OKOvydyXOeeT6TQ="
   },
   "insider": {
     "version": "1.142.0-insider",
-    "commit": "87b342fb1307208939bf39bddd7dfc94b4ccfdd9",
-    "hash-linux-x64": "sha256-/08DkAsCR1aUDBfTWjgX/HrAGSV9988eKPGKxlxX6hI=",
-    "hash-linux-arm64": "sha256-U44m3zEmG7YoSBE45vtEr96Jas9obvlsDY7/1Sny4/I="
+    "commit": "f4dfb91d30e485df45e3856a5df232d8b775a51b",
+    "hash-linux-x64": "sha256-5JwRunYPA4VM2Oo/YjARey2uXkLlub5ARO4sp8LbwNQ=",
+    "hash-linux-arm64": "sha256-QRHxwVpIwNTlnVZhIi37ExGK7ESaJmgYsItyxctrOag="
   }
 }
