@@ -1,9 +1,9 @@
 {
   "stable": {
-    "version": "1.143.1",
-    "commit": "e646868227c3e3a9e3f24277c8c7220be42c0be7",
-    "hash-linux-x64": "sha256-SPZYBS5U4CChwb57N6wPmuOfB+jM2oBcY/BTz9pysr4=",
-    "hash-linux-arm64": "sha256-6EvyDREv23PCm4WzF7pQ1aSL6gXAcRUJZpyEZmOenrY="
+    "version": "1.144.0",
+    "commit": "2c33b50b16c472efe58357d1d2a8a5414bc23fbf",
+    "hash-linux-x64": "sha256-F7cqfm9ApbXc6YUPEO6hPOc0pjBStn+gIcwB5xWtTPE=",
+    "hash-linux-arm64": "sha256-wXWPIUTGiylfsqNUPpO8A6uZ+OpxXP0FYDdwkqug8Zg="
   },
   "insider": {
     "version": "1.145.0-insider",
